@@ -16,27 +16,16 @@
             <div class="col-md-12">
                 <h2 id="job-list-title">Veja as vagas em Destaque</h2>
                 <ul id="job-list" class="list-group">
-                    <li class="list-group-item new-job">
-                        <img src="/img/company.svg" alt="company">
-                        <p>Empresa</p>
-                        <h2>Título da Vaga</h2>
-                        <p>R$2000,00</p>
-                        <span class="new-job-label">Nova</span>
-                        <a class="btn btn-primary">Ver Vaga</a>
-                    </li>
-                    <li class="list-group-item">
-                        <img src="/img/company.svg" alt="Company">
-                        <p>Empresa</p>
-                        <h2>Título da vaga</h2>
-                        <p>R$2000,00</p>
-                        <a class="btn btn-primary">Ver vaga</a>
-                    </li>
-                    <li class="list-group-item">
-                        <img src="/img/company.svg" alt="Company">
-                        <p>Empresa</p>
-                        <h2>Título da vaga</h2>
-                        <p>R$2000,00</p>
-                        <a class="btn btn-primary">Ver vaga</a>
+                    {{#each jobs}}
+                        <li class="list-group-item {{#if dataValues.new_job }}new-job{{/if}}">
+                            <img src="/img/company.svg" alt="company">
+                            <p>{{dataValues.company}}</p>
+                            <h2>{{dataValues.title}}</h2>
+                            <p>{{dataValues.salary}}</p>
+                            <span class="new-job-label">Nova</span>
+                            <a class="btn btn-primary">Ver Vaga</a>
+                        </li>
+                    {{/each}}
                 </ul>
             </div>
         </div>

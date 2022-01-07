@@ -5,6 +5,7 @@ const path = require('path');
 const db = require('./db/connection');
 const bodyParser = require('body-parser');
 const { handle } = require('express/lib/application');
+const Job = require('./models/Job');
 
 const PORT = 3000;
 
@@ -35,7 +36,18 @@ db
 
 // Rotas
 app.get('/', (req, res) => {
-    res.render('index');
+
+    Job.findAll({
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        })
+        .then(jobs => {
+
+            res.render('index', {
+                jobs
+            });
+        });
 });
 
 // Jobs Routes
